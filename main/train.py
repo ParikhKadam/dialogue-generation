@@ -86,13 +86,13 @@ else:
     optimizer = None
     if not opt.resume:
         # Initialize model
-        hidden_size = 128
+        hidden_size = 256
         bidirectional = True
         encoder = EncoderRNN(len(src.vocab), max_len, hidden_size,
-                             bidirectional=bidirectional, variable_lengths=True, n_layers=1)
+                             bidirectional=bidirectional, variable_lengths=True, n_layers=2)
 
         decoder = DecoderRNN(len(tgt.vocab), max_len, hidden_size * 2 if bidirectional else hidden_size,
-                             dropout_p=0.25, use_attention=True, bidirectional=bidirectional, eos_id=tgt.eos_id, sos_id=tgt.sos_id, n_layers=1)
+                             dropout_p=0.25, use_attention=True, bidirectional=bidirectional, eos_id=tgt.eos_id, sos_id=tgt.sos_id, n_layers=2)
 
         seq2seq = Seq2seq(encoder, decoder)
 
