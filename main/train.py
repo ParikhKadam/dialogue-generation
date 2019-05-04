@@ -113,7 +113,7 @@ else:
         # optimizer.set_scheduler(scheduler)
 
     # train
-    t = SupervisedTrainer(loss=loss, batch_size=64, checkpoint_every=500, print_every=500, expt_dir=opt.expt_dir)
+    t = SupervisedTrainer(loss=loss, batch_size=64, checkpoint_every=2000, print_every=500, expt_dir=opt.expt_dir)
 
     seq2seq = t.train(seq2seq, train, num_epochs=50, dev_data=dev,
                       optimizer=optimizer, teacher_forcing_ratio=0.5, resume=opt.resume)
